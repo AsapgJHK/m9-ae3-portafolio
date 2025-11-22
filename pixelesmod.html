@@ -4,26 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio Fullstack - Efecto Glossy Dinámico</title>
-    <!-- Carga de Tailwind CSS para la estructura --><script src="https://cdn.tailwindcss.com"></script>
-    <!-- Carga de la fuente Inter --><link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <!-- Carga de Three.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
-        /* --------------------------------------------------------------------------
-           style.css - Estilos Frutiger Aero/Data Block para Portafolio
-           -------------------------------------------------------------------------- */
-
-        /* Variables y Configuración Global */
+        
         :root {
             --color-primary: #00BFFF; 
             --color-secondary: #00FF7F; 
-            --color-glass-light: rgba(255, 255, 255, 0.9); /* Más opaco para más brillo */
-            --color-glass-dark: rgba(255, 255, 255, 0.4); /* Más opaco */
-            --color-shadow: rgba(0, 0, 0, 0.3); /* Sombra más fuerte */
+            --color-glass-light: rgba(255, 255, 255, 0.9); 
+            --color-glass-dark: rgba(255, 255, 255, 0.4); 
+            --color-shadow: rgba(0, 0, 0, 0.3); 
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            /* Fondo vibrante de azul a verde */
+            
             background: linear-gradient(135deg, #1e90ff 0%, #00FF7F 100%); 
             min-height: 100vh;
             display: flex;
@@ -34,35 +30,35 @@
             position: relative;
         }
 
-        /* Contenedor del Canvas de Three.js (Fondo) */
+        
         #three-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1; /* Detrás del contenido */
-            pointer-events: none; /* Asegura que no bloquee interacciones */
+            z-index: 1; 
+            pointer-events: none; 
             background-color: transparent; 
         }
         
-        /* ------------------ EFECTO CRISTAL (AERO) - Más Glossy ------------------ */
+        
         .glass-container {
-            backdrop-filter: blur(25px); /* Más blur */
+            backdrop-filter: blur(25px); 
             -webkit-backdrop-filter: blur(25px);
             background-color: var(--color-glass-light);
-            border: 3px solid rgba(255, 255, 255, 1); /* Borde más grueso y opaco */
-            /* Múltiples sombras para más profundidad y efecto de "brillo interno" */
+            border: 3px solid rgba(255, 255, 255, 1); 
+            
             box-shadow: 
-                0 0 30px rgba(255, 255, 255, 0.7) inset, /* Brillo interno suave */
-                0 15px 50px var(--color-shadow); /* Sombra externa más fuerte */
+                0 0 30px rgba(255, 255, 255, 0.7) inset, 
+                0 15px 50px var(--color-shadow); 
             border-radius: 20px;
             transition: all 0.3s ease;
             position: relative;
             z-index: 10; 
         }
 
-        /* ------------------ BOTONES ICY (CRISTAL PULIDO) ------------------ */
+        
         .btn-icy {
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(200, 230, 255, 0.8) 100%);
             color: #007bff;
@@ -71,7 +67,7 @@
             transition: all 0.3s;
             text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
             font-weight: 700;
-            display: inline-flex; /* Asegura que el SVG y el texto estén alineados */
+            display: inline-flex; 
             align-items: center;
             justify-content: center;
         }
@@ -83,7 +79,7 @@
             color: #0056b3;
         }
 
-        /* ------------------ TÍTULOS CON BRILLO ------------------ */
+        
         .title-aero {
             color: #0066cc;
             text-shadow:
@@ -102,7 +98,7 @@
             letter-spacing: -1px;
         }
 
-        /* Estilo para las tarjetas de proyecto */
+        
         .project-card {
             background-color: var(--color-glass-dark);
             border: 1px solid rgba(255, 255, 255, 0.6);
@@ -115,83 +111,87 @@
             border-color: var(--color-secondary);
         }
 
-        /* Estilos específicos para el SVG de GitHub */
+        
         .btn-icy svg {
-            fill: currentColor; /* Asegura que el SVG herede el color del texto del botón */
+            fill: currentColor; 
         }
     </style>
 </head>
 <body class="relative">
 
-    <!-- Contenedor para el Canvas 3D de Three.js --><div id="three-container"></div>
+    <div id="three-container"></div>
     
-    <!-- Contenedor Principal con efecto Cristal --><div class="glass-container max-w-6xl w-full p-6 md:p-12 space-y-12">
+    <div class="glass-container max-w-6xl w-full p-6 md:p-12 space-y-12">
 
-        <!-- Header / Sección de Perfil --><header id="perfil" class="text-center">
+        <header id="perfil" class="text-center">
             <div class="relative inline-block p-2 rounded-full bg-white shadow-xl">
-                <!-- Placeholder de Imagen del Desarrollador --><img src="https://placehold.co/150x150/00BFFF/ffffff?text=DEV" 
+                <img src="https://placehold.co/150x150/00BFFF/ffffff?text=DEV" 
                      alt="Foto de Perfil del Desarrollador" 
                      class="w-36 h-36 object-cover rounded-full border-4 border-blue-500 shadow-lg">
-                <!-- Círculo de estado "Online" --><span class="absolute bottom-4 right-4 block h-5 w-5 rounded-full ring-4 ring-white bg-green-500 animate-pulse" title="Disponible para Proyectos"></span>
+                <span class="absolute bottom-4 right-4 block h-5 w-5 rounded-full ring-4 ring-white bg-green-500 animate-pulse" title="Disponible para Proyectos"></span>
             </div>
             
             <h1 class="title-aero text-5xl mt-4">Alberto Palma Gaete</h1>
             <h2 class="title-aero2 text-4xl mt-4">(Desarrollador Fullstack)</h2>
             <p class="text-2xl text-gray-700 font-extralight mt-2">
-                Arquitecta de Software | Soluciones Escalables
+                Data Science | Javascript Fullstack
             </p>
             <p class="text-gray-700 mt-4 max-w-3xl mx-auto text-lg">
-                Especialista en desarrollo web de pila completa. Con experiencia en **React** para interfaces fluidas y **Node.js/PostgreSQL** para sistemas de *backend* de alto rendimiento. Mi enfoque es la usabilidad y la eficiencia.
+                Estudiante de Programa Oracle Next Education G8 y estudiante Javascript Fullstack 
+                 programa Talento Digital | Aspirante a Desarrollador y Programador de Data Science y 
+                 Desarrollador Fullstack Javascript 
+                
+                
             </p>
             <div class="mt-8 flex justify-center space-x-6">
-                <a href="#" class="btn-icy px-8 py-3 rounded-full hover:bg-opacity-90 transition duration-300">
-                    <!-- Icono de GitHub - Versión mejorada --><svg class="inline w-5 h-5 mr-2" viewBox="0 0 16 16" version="1.1" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2.0 0 .15.33.55.25C13.71 14.53 16 11.53 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+                <a href="https://github.com/AsapgJHK" target="_blank" class="btn-icy px-8 py-3 rounded-full hover:bg-opacity-90 transition duration-300">
+                    <svg class="inline w-5 h-5 mr-2" viewBox="0 0 16 16" version="1.1" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2.0 0 .15.33.55.25C13.71 14.53 16 11.53 16 8c0-4.42-3.58-8-8-8z"></path></svg>
                     GitHub
                 </a>
-                <a href="#" class="btn-icy px-8 py-3 rounded-full hover:bg-opacity-90 transition duration-300">
-                    <!-- Icono de LinkedIn --><svg class="inline w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M16.338 16.338H13.68v-4.32a1.005 1.005 0 01-.013-.238c-.04-1.008-.86-2.072-2.185-2.072-1.688 0-2.39 1.258-2.39 2.476v4.154H6.772V6.51h2.553v1.107h.034a2.768 2.768 0 012.483-1.366c2.66 0 4.095 1.68 4.095 5.378v5.187zM4.14 5.361A1.857 1.857 0 012.28 3.504C2.28 2.477 3.12 1.637 4.14 1.637s1.86.84 1.86 1.867c0 1.027-.84 1.857-1.86 1.857zM5.42 6.51H2.861v9.827H5.42V6.51z"></path></svg>
+                <a href=" https://www.linkedin.com/in/alberto-palma-gaete-71709734b/" target="_blank" class="btn-icy px-8 py-3 rounded-full hover:bg-opacity-90 transition duration-300">
+                    <svg class="inline w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M16.338 16.338H13.68v-4.32a1.005 1.005 0 01-.013-.238c-.04-1.008-.86-2.072-2.185-2.072-1.688 0-2.39 1.258-2.39 2.476v4.154H6.772V6.51h2.553v1.107h.034a2.768 2.768 0 012.483-1.366c2.66 0 4.095 1.68 4.095 5.378v5.187zM4.14 5.361A1.857 1.857 0 012.28 3.504C2.28 2.477 3.12 1.637 4.14 1.637s1.86.84 1.86 1.867c0 1.027-.84 1.857-1.86 1.857zM5.42 6.51H2.861v9.827H5.42V6.51z"></path></svg>
                     LinkedIn
                 </a>
             </div>
         </header>
 
-        <!-- Separador de ondas suaves (Aero) --><div class="w-full h-1 my-10 bg-gradient-to-r from-blue-400 via-green-300 to-blue-400 rounded-full shadow-lg"></div>
+        <div class="w-full h-1 my-10 bg-gradient-to-r from-blue-400 via-green-300 to-blue-400 rounded-full shadow-lg"></div>
 
-        <!-- Sección de Habilidades (Skills) --><section id="habilidades" class="text-center">
-            <h2 class="title-aero text-4xl mb-10 border-b-2 border-opacity-30 pb-3 inline-block">🛠 Stack Tecnológico</h2>
+        <section id="habilidades" class="text-center">
+            <h2 class="title-aero text-4xl mb-10 border-b-2 border-opacity-30 pb-3 inline-block">Vibe Coding</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 
-                <!-- Columna Frontend --><div class="p-6 glass-container project-card hover:border-blue-500">
+                <div class="p-6 glass-container project-card hover:border-blue-500">
                     <h3 class="font-extrabold text-2xl text-blue-700 mb-4 border-b pb-2">Frontend</h3>
                     <ul class="text-gray-700 space-y-2 text-left mx-auto max-w-[150px]">
-                        <li><span class="font-bold text-blue-500">ReactJS</span> (Hooks, Context)</li>
-                        <li>TypeScript & JavaScript ES6+</li>
-                        <li>Tailwind CSS & SCSS</li>
-                        <li>Diseño Adaptativo (Mobile-First)</li>
+                        <li><span class="font-bold text-blue-500">Vibe Coding</span></li>
+                        <li>JavaScript ES6+</li>
+                        <li>CSS3</li>
+                        <li>HTML5</li>
                     </ul>
                 </div>
                 
-                <!-- Columna Backend --><div class="p-6 glass-container project-card hover:border-green-500">
+                <div class="p-6 glass-container project-card hover:border-green-500">
                     <h3 class="font-extrabold text-2xl text-green-700 mb-4 border-b pb-2">Backend</h3>
                     <ul class="text-gray-700 space-y-2 text-left mx-auto max-w-[150px]">
                         <li><span class="font-bold text-green-500">Node.js</span> (Express.js)</li>
-                        <li>Python (Django / Flask)</li>
-                        <li>Arquitecturas RESTful/GraphQL</li>
-                        <li>Manejo de Servidores (Nginx)</li>
+                        <li>Python</li>
+                        <li>Arquitecturas RESTful</li>
+                        <li></li>
                     </ul>
                 </div>
 
-                <!-- Columna Bases de Datos --><div class="p-6 glass-container project-card hover:border-red-500">
+                <div class="p-6 glass-container project-card hover:border-red-500">
                     <h3 class="font-extrabold text-2xl text-red-700 mb-4 border-b pb-2">Datos & Cloud</h3>
                     <ul class="text-gray-700 space-y-2 text-left mx-auto max-w-[150px]">
-                        <li><span class="font-bold text-red-500">PostgreSQL</span> & SQL Tuning</li>
-                        <li>MongoDB / Redis</li>
-                        <li>AWS (S3, Lambda, EC2)</li>
-                        <li>Firebase / Firestore</li>
+                        <li><span class="font-bold text-red-500"> Oracle Cloud Infrastructure</span>  </li>
+                        <li>PostgreSQL</li>
+                        <li>SQL</li>
+                        <li></li>
                     </ul>
                 </div>
 
-                <!-- Columna DevOps & Herramientas --><div class="p-6 glass-container project-card hover:border-purple-500">
+                <div class="p-6 glass-container project-card hover:border-purple-500">
                     <h3 class="font-extrabold text-2xl text-purple-700 mb-4 border-b pb-2">DevOps & CI/CD</h3>
                     <ul class="text-gray-700 space-y-2 text-left mx-auto max-w-[150px]">
                         <li><span class="font-bold text-purple-500">Docker</span> (Contenedores)</li>
@@ -203,56 +203,59 @@
             </div>
         </section>
 
-        <!-- Separador de ondas suaves (Aero) --><div class="w-full h-1 my-10 bg-gradient-to-r from-blue-400 via-green-300 to-blue-400 rounded-full shadow-lg"></div>
+        <div class="w-full h-1 my-10 bg-gradient-to-r from-blue-400 via-green-300 to-blue-400 rounded-full shadow-lg"></div>
 
-        <!-- Sección de Proyectos --><section id="proyectos">
+        <section id="proyectos">
             <h2 class="title-aero text-4xl text-center mb-10 border-b-2 border-opacity-30 pb-3 inline-block">⭐ Proyectos Destacados (Transparencia y Usabilidad)</h2>
             
             <div class="grid md:grid-cols-2 gap-8">
                 
-                <!-- Tarjeta de Proyecto 1 (CRM Avanzado) --><div class="p-8 project-card rounded-2xl">
-                    <h3 class="text-2xl font-bold text-blue-700 mb-2">Sistema CRM en Tiempo Real</h3>
+                <div class="p-8 project-card rounded-2xl">
+                    <h3 class="text-2xl font-bold text-blue-700 mb-2">Challenge Telecom X de Alura Latam</h3>
                     <p class="text-gray-700 mb-4 text-sm">
-                        Aplicación empresarial para gestión de clientes. Presenta un dashboard interactivo con gráficas D3.js y actualizaciones de datos en vivo (WebSockets).
+                        Este proyecto contiene un análisis de datos sobre la evasión (churn) de clientes de una empresa de telecomunicaciones, utilizando Python y librerías comunes de ciencia de datos. El análisis incluye etapas de extracción, normalización, transformación y visualización de datos, optimizado para su ejecución en Google Colab.
+                                                
                     </p>
                     <div class="flex flex-wrap gap-2 text-sm mb-4">
-                        <span class="bg-blue-300 text-blue-900 px-3 py-1 rounded-full font-medium shadow-md">React & D3.js</span>
-                        <span class="bg-green-300 text-green-900 px-3 py-1 rounded-full font-medium shadow-md">Node.js (Sockets)</span>
-                        <span class="bg-red-300 text-red-900 px-3 py-1 rounded-full font-medium shadow-md">PostgreSQL</span>
+                        <span class="bg-blue-300 text-blue-900 px-3 py-1 rounded-full font-medium shadow-md">Python</span>
+                        <span class="bg-green-300 text-green-900 px-3 py-1 rounded-full font-medium shadow-md">Google Colab</span>
+                        <span class="bg-red-300 text-red-900 px-3 py-1 rounded-full font-medium shadow-md">Matplotlib</span>
                     </div>
                     <div class="flex space-x-3 mt-4">
-                        <a href="#" class="btn-icy px-5 py-2 text-base shadow-lg">Ver Demo</a>
-                        <a href="#" class="btn-icy px-5 py-2 text-base shadow-lg">Código Fuente</a>
+                        <a href="./telecom.jpg" target="_blank" rel="noopener noreferrer" class="btn-icy px-5 py-2 text-base shadow-lg">Ver Demo</a>
+                        <a href="https://github.com/AsapgJHK/Challenge-Telecom-X" target="_blank" class="btn-icy px-5 py-2 text-base shadow-lg">Código Fuente</a>
                     </div>
                 </div>
 
-                <!-- Tarjeta de Proyecto 2 (E-commerce Cloud-Native) --><div class="p-8 project-card rounded-2xl">
-                    <h3 class="text-2xl font-bold text-green-700 mb-2">Tienda E-commerce Microservicios</h3>
+                <div class="p-8 project-card rounded-2xl">
+                    <h3 class="text-2xl font-bold text-green-700 mb-2">Book Store: Aplicación de Gestión de Inventario de Libros</h3>
                     <p class="text-gray-700 mb-4 text-sm">
-                        Plataforma de comercio electrónico con arquitectura cloud-native. El catálogo y el inventario están separados en servicios Dockerizados para alta disponibilidad.
+                        Este proyecto es una aplicación web full-stack diseñada para la gestión de un inventario de libros, permitiendo a los usuarios autenticarse, visualizar el stock y simular la compra de artículos. El frontend utiliza HTML, CSS (Bootstrap) y JavaScript puro, mientras que el backend está basado en Node.js con Express.
+                                           
+                        
                     </p>
                     <div class="flex flex-wrap gap-2 text-sm mb-4">
-                        <span class="bg-blue-300 text-blue-900 px-3 py-1 rounded-full font-medium shadow-md">Vue.js & Pinia</span>
-                        <span class="bg-green-300 text-green-900 px-3 py-1 rounded-full font-medium shadow-md">Django/Python</span>
-                        <span class="bg-purple-300 text-purple-900 px-3 py-1 rounded-full font-medium shadow-md">Kubernetes (K8s)</span>
+                        <span class="bg-blue-300 text-blue-900 px-3 py-1 rounded-full font-medium shadow-md">Node.js</span>
+                        <span class="bg-green-300 text-green-900 px-3 py-1 rounded-full font-medium shadow-md">Express</span>
+                        <span class="bg-purple-300 text-purple-900 px-3 py-1 rounded-full font-medium shadow-md">CSS</span>
                     </div>
                     <div class="flex space-x-3 mt-4">
-                        <a href="#" class="btn-icy px-5 py-2 text-base shadow-lg">Ver Demo</a>
-                        <a href="#" class="btn-icy px-5 py-2 text-base shadow-lg">Código Fuente</a>
+                        <a href="./tienda.jpg"  target="_blank" rel="noopener noreferrer" class="btn-icy px-5 py-2 text-base shadow-lg">Ver Demo</a>
+                        <a href="https://github.com/AsapgJHK/m9-app-libros" target="_blank" rel="noopener noreferrer"  class="btn-icy px-5 py-2 text-base shadow-lg">Código Fuente</a>
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- Separador de ondas suaves (Aero) --><div class="w-full h-1 my-10 bg-gradient-to-r from-blue-400 via-green-300 to-blue-400 rounded-full shadow-lg"></div>
+        <div class="w-full h-1 my-10 bg-gradient-to-r from-blue-400 via-green-300 to-blue-400 rounded-full shadow-lg"></div>
         
-        <!-- Footer / Contacto --><footer class="text-center pt-4 pb-2">
+        <footer class="text-center pt-4 pb-2">
             <h3 class="title-aero text-3xl mb-4">¡Construyamos algo brillante! ✨</h3>
             <p class="text-gray-700 mb-6 text-lg">
                 Si buscas un desarrollador con visión clara y pasión por la tecnología, contáctame hoy mismo.
             </p>
-            <a href="mailto:tu.email@example.com" class="btn-icy px-10 py-4 rounded-full text-xl shadow-2xl">
+            <a href="mailto:alberto.palma.gaete@gmail.com" class="btn-icy px-10 py-4 rounded-full text-xl shadow-2xl">
                 Enviar un Mensaje
             </a>
             <p class="text-gray-500 text-xs mt-8">
@@ -263,26 +266,26 @@
     </div>
     
     <script>
-        // Lógica de Three.js para el fondo 3D Glossy (Cubos/Píxeles de Datos Dinámicos)
+        
         window.onload = function () {
-            // Variables de la escena
+            
             let scene, camera, renderer;
             let cubes = [];
-            const cubeCount = 100; // Aumento la cantidad para un efecto de "data" más denso
+            const cubeCount = 100; 
             const container = document.getElementById('three-container');
             let clock = new THREE.Clock();
 
             function init() {
-                // 1. Escena
+                
                 scene = new THREE.Scene();
                 scene.background = null; 
 
-                // Obtener dimensiones del contenedor
+                
                 const width = container.clientWidth;
                 const height = container.clientHeight;
                 const aspectRatio = width / height;
 
-                // 2. Cámara Ortográfica (Mantenida para garantizar que los cubos se vean cuadrados)
+               
                 const frustumSize = 50; 
                 camera = new THREE.OrthographicCamera(
                     frustumSize * aspectRatio / -2, 
@@ -294,49 +297,48 @@
                 );
                 camera.position.z = 25; 
                 
-                // 3. Renderizador
+                
                 renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
                 renderer.setSize(width, height);
                 renderer.setPixelRatio(window.devicePixelRatio);
                 renderer.setClearColor(0x000000, 0); 
                 container.appendChild(renderer.domElement);
                 
-                // 4. Luces (Ajustadas para máximo brillo glossy)
                 
-                // Luz de ambiente suave (para iluminar el color base)
+                
+                
                 const ambientLight = new THREE.AmbientLight(0xffffff, 0.4); 
                 scene.add(ambientLight);
 
-                // Luz direccional principal (genera el reflejo blanco dominante)
-                const directionalLight = new THREE.DirectionalLight(0xffffff, 1.8); // Intensidad muy alta
+                
+                const directionalLight = new THREE.DirectionalLight(0xffffff, 1.8); 
                 directionalLight.position.set(20, 20, 30);
                 scene.add(directionalLight);
 
-                // Luz secundaria de punto (simula reflejos desde otro ángulo)
+                
                 const pointLight = new THREE.PointLight(0xffffff, 1.0, 50); 
                 pointLight.position.set(-15, -10, 15);
                 scene.add(pointLight);
 
-                // 5. Creación de Cubos (Data Blocks - Píxeles 3D)
-                // Usamos BoxGeometry en lugar de SphereGeometry
+                
                 const geometry = new THREE.BoxGeometry(1, 1, 1); 
 
-                // Materiales de ALTA transparencia y MAXIMO brillo (simulando cristal o bloques de datos)
+                
                 const materials = [
                     new THREE.MeshPhongMaterial({ 
                         color: 0xffffff, 
                         specular: 0xffffff, 
-                        shininess: 600, // Brillo extremo para el efecto de cristal/data
+                        shininess: 600, 
                         transparent: true,
-                        opacity: 0.15, // Opacidad baja
-                        flatShading: true // Opción para un look más "pixelado"
+                        opacity: 0.15, 
+                        flatShading: true 
                     }),
                     new THREE.MeshPhongMaterial({ 
                         color: 0xeeeeff, 
                         specular: 0xffffff, 
                         shininess: 600, 
                         transparent: true,
-                        opacity: 0.08, // Opacidad mínima
+                        opacity: 0.08, 
                         flatShading: true
                     }),
                     new THREE.MeshPhongMaterial({ 
@@ -344,55 +346,55 @@
                         specular: 0xffffff, 
                         shininess: 600, 
                         transparent: true,
-                        opacity: 0.20, // Opacidad ligeramente visible
+                        opacity: 0.20, 
                         flatShading: true
                     })
                 ];
                 
-                // Rango máximo de posición para que los cubos cubran el área de la cámara ortográfica
+                
                 const maxRangeX = frustumSize * aspectRatio / 2;
                 const maxRangeY = frustumSize / 2;
 
-                // Generación de cubos y posiciones aleatorias
+                
                 for (let i = 0; i < cubeCount; i++) {
                     const material = materials[i % materials.length].clone(); 
                     const cube = new THREE.Mesh(geometry, material);
                     
-                    // Posicionamiento dentro del rango de la cámara
+                    
                     const x = (Math.random() - 0.5) * maxRangeX * 2; 
                     const y = (Math.random() - 0.5) * maxRangeY * 2; 
-                    const z = -20 + Math.random() * 15; // Profundidad
+                    const z = -20 + Math.random() * 15; 
                     
                     cube.position.set(x, y, z);
                     
-                    // Tamaño aleatorio, pero ESCALADO UNIFORME para GARANTIZAR forma de cubo
+                    
                     const scale = 0.5 + Math.random() * 2.5; 
                     cube.scale.set(scale, scale, scale); 
                     
-                    // Propiedades para el movimiento dinámico
+                    
                     cube.userData.amplitudeX = 3 + Math.random() * 4; 
                     cube.userData.frequencyX = 0.5 + Math.random() * 1.5; 
                     cube.userData.initialX = x; 
                     cube.userData.initialY = y; 
-                    // Propiedad de rotación para que giren en 3D
+                    
                     cube.userData.rotationSpeed = 0.005 + Math.random() * 0.01;
 
                     scene.add(cube);
                     cubes.push(cube);
                 }
 
-                // Escuchador de eventos de redimensionamiento
+                
                 window.addEventListener('resize', onWindowResize, false);
             }
 
-            // Función para manejar el redimensionamiento de la ventana y ajustar la cámara ortográfica
+            
             function onWindowResize() {
                 const width = container.clientWidth;
                 const height = container.clientHeight;
                 const aspectRatio = width / height;
                 const frustumSize = 50; 
 
-                // Recalcular los límites de la cámara ortográfica
+                
                 camera.left = frustumSize * aspectRatio / -2;
                 camera.right = frustumSize * aspectRatio / 2;
                 camera.top = frustumSize / 2;
@@ -402,24 +404,24 @@
                 renderer.setSize(width, height);
             }
 
-            // Bucle de animación (Movimiento sinusoidal dinámico)
+            
             function animate() {
                 requestAnimationFrame(animate);
 
-                const elapsedTime = clock.getElapsedTime(); // Tiempo transcurrido para el movimiento orgánico
+                const elapsedTime = clock.getElapsedTime(); 
 
-                // Mover y rotar los cubos
+                
                 cubes.forEach((cube, index) => {
                     
-                    // Movimiento Sinusoidal
+                    
                     cube.position.x = cube.userData.initialX + Math.sin(elapsedTime * 0.4 * cube.userData.frequencyX + index) * cube.userData.amplitudeX;
                     cube.position.y = cube.userData.initialY + Math.cos(elapsedTime * 0.3 * cube.userData.frequencyX + index) * cube.userData.amplitudeX * 0.8;
                     
-                    // Rotación constante en el eje X e Y
+                    
                     cube.rotation.x += cube.userData.rotationSpeed;
                     cube.rotation.y += cube.userData.rotationSpeed / 2;
 
-                    // Flotación Z (Profundidad)
+                    
                     cube.position.z = -20 + Math.sin(elapsedTime * 0.1 + index) * 5; 
                 });
 
